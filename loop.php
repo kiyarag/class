@@ -1,45 +1,85 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>:: Registration ::</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-  <style type="text/css">.table td, .table th{ font-size:14px; }</style>
-  </head>
-  <body class="bg-light py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12"><h4>Loop Class</h4>
-          <div class="table-part">
-            <?php 
-            for ($i=1; $i<10; $i++) {
-              echo "<p>";
-              echo $i;
-              echo "</p>";
-            }
-            ?>
+<?php
+	//for, while, foreach, do while == type of loop
+	for ($i=1; $i < 5; $i++) { 
+		echo "<li>"; 
+		echo $i; 
+		echo "</li>"; 
+	}
+?>
+<?php //  start->Condition-> Increment/Decrement-> end
+for ($i=2; $i<= 10; $i++) { 
+	echo "---";
+	echo $i;
+}
+?>
+<br>
+--------value multiply-----------
+<br>
+<?php 
+for ($x = 1; $x <= 10; $x++){ 
+	$a = 5;
+	$result = $a*$x;
+	echo $result;
+	echo "---";
+}
+?>
+<br><br>
+--------All value Add-----------
+<br><br>
+<?php 
+$x = 0;
+$y = 5;
+	for ($i=1; $i <=5 ; $i++) { 		
+		$x = $x + $i;		
+	}
+	echo $x;
+	$tsum = $x*$y;
+	echo "----";
+	echo $tsum; //with discount
+?>
+<br>
+<style type="text/css">
+.myTable{ border: 1px solid #000; }
+.myTable tr{ background-color: #ccc; }
+.myTable tr:nth-child(2n){ background-color: #EEE; }
+</style>
+<table class="myTable">
+	<thead><th>S.N</th></thead>
+	<tbody>
+<?php
+$i=1;
+while ($i <= 10) {
+	//echo $i;
+	$i++;
+?>
+<tr>
+	<td><?php echo $i ?></td>
+</tr>
+<?php } ?>
+</tbody>
+</table>
 
-            <?php
-              for ($x=1; $x < 5; $x++) {
-                echo "<br>";
-                echo $x;
-              }
-            ?>
+<ul style="float:left;">
+<?php
+$i=10;
+while ($i >= 1) {
+	//echo $i;
+	
+?>
+<li><?php echo $i ?></li>
+<?php 
+$i--; 
+} ?>
+</ul>
 
-            <?php
-              /*for($x = A; $x < Z; $x++){
-                echo "<p>";
-                echo $x;
-                echo "</p>";
-              }*/
-            ?>
-          </div>
-        </div>
-      </div>
-    </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html>
-
+<ul style="float:left;">
+<?php
+$i=1;
+while ($i <= 10) {
+	//echo $i;
+?>
+<li><?php echo $i ?></li>
+<?php 
+$i++; 
+} ?>
+</ul>
