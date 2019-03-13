@@ -1,0 +1,79 @@
+<?php
+$sucessmsg="";
+if (isset($_GET["msg"])) {
+	$sucessmsg = $_GET["msg"];
+}
+?>
+<div><?php echo $sucessmsg; ?></div>
+<form method="POST" action="homepro.php">
+	<input type="text" name="title">
+	<textarea name="content"></textarea>
+	<input type="submit" name="submit" value="Save home">
+</form>
+<table>
+	<thead>
+		<tr>
+		<th>s.n</th>
+		<th>tittle</th>
+		<th>content</th></tr>
+	</thead>
+	<tbody>
+		<?php
+		$x=1;
+
+		include("connection.php");
+		$sql = "SELECT * FROM home";
+		$query = mysqli_query($con,$sql);
+		while ($row=mysqli_fetch_assoc( $query)) {
+		?>
+		<tr>
+			<td><?php echo $x; ?></td>
+			<td><?php echo $row["title"]; ?></td>
+			<td><?php echo $row["content"]; ?></td>
+			<td><a href="">update</a>/<a href="">delete</a></td>
+		</tr>
+		<?php $x++; } ?>
+	</tbody>
+</table>
+
+
+<?php
+//Database Connection
+//$connectiondb=mysqli_connect("localhost","root","");
+//$Connection=mysqli_select_db("invoice_finsoft",$Connection);
+
+$con=mysqli_connect('localhost','root','');
+if (!$con) {
+	echo 'Not Connected to server';
+}
+if (!mysqli_select_db($con,'neophere')) {
+	echo 'Database not selected';
+}
+?>
+
+<?php
+include("connection.php");
+
+$title="";
+if (isset($_POST["title"])) {
+	$title=$_POST["title"];
+}
+$content="";
+if (isset($_POST["content"])) {
+	$content=$_POST["content"];
+}
+
+$sql="INSERT INTO home (title,content) VALUES ('$title', '$content')";
+//$qry = mysqli_query($con, $sql);
+if (!mysqli_query($con, $sql)) {
+	echo "not inserted";
+}
+else{
+	mysqli_query($con, $sql);
+//	echo "data inserted";
+	header("Location:home.php?msg=data inserted");
+}
+?>
+
+
+
